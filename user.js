@@ -1,8 +1,9 @@
 class User {
-  constructor(name, email, password) {
+  constructor(name, email, password, phone) {
     this.name = name;
     this.email = email;
     this.password = password;
+    this.phone = phone;
     this.friends = [];
   }
   addFriends(user){
@@ -12,12 +13,16 @@ class User {
     return this.friends;
   }
 }
-var person1 = new User('Serena','sv1419@nyu.edu','aidan930')
+// document.getElementbyID('sendMessageButton').onclick
+var x = document.getElementById('sendMessageButton');
+var name = document.getElementById('name');
+var email = document.getElementById('email');
+var password = document.getElementById('password');
+var phone = document.getElementById('phone');
 
-var person2 = new User('Claudia','ccr330@nyu.edu','qwer5678')
-document.getElementById("check1").addEventListener("mousedown",gotEM());
+x.onclick = function () {createUser(name.value,email.value,password.value,phone.value);};
 
-function gotEM(){
-  person1.addFriends(person2);
-  console.log(person1.Friends);
+function createUser(name, username, password, phone){
+  var person = new User(name, username, password, phone);
+  console.log(person);
 }
