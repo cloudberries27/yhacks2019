@@ -5,8 +5,9 @@ var ipgeolocationApi = new IPGeolocationAPI(apiKey, false);
 
 // Function to handle response from IP Geolocation API
 function handleResponse(json) {
-    console.log(json);
+  console.log(obj.result);
 }
+
 
 var GeolocationParams = require('ip-geolocation-api-javascript-sdk/GeolocationParams.js');
 
