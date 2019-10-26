@@ -4,6 +4,7 @@ class User {
     this.email = email;
     this.password = password;
     this.phone = phone;
+    this.location = ' ';
     this.friends = [];
   }
   addFriends(user){
