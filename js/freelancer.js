@@ -1,63 +1,80 @@
-(function($) {
-  "use strict"; // Start of use strict
-
-  // Smooth scrolling using jQuery easing
-  $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-      if (target.length) {
-        $('html, body').animate({
-          scrollTop: (target.offset().top - 71)
-        }, 1000, "easeInOutExpo");
-        return false;
+var root = {
+ "name": "flare",
+ "children": [
+      {
+        name: "display",
+        children: [
+                  {name:"display1",size:1,
+                   children: [
+                            {name:"display1.a",size:1}
+                              ]
+                  },
+                   {name:"display2",size:2},
+                    {name:"display3",size:3}
+                  ]
+      },
+         {
+        name: "data",
+        children: [
+                  {name:"happy",size:4}
+                  ]
+      },
+         {
+        name: "data",
+        children: [
+                  {name:"quadro",size:9}
+                  ]
       }
-    }
-  });
+   ]};
 
-  // Scroll to top button appear
-  $(document).scroll(function() {
-    var scrollDistance = $(this).scrollTop();
-    if (scrollDistance > 100) {
-      $('.scroll-to-top').fadeIn();
-    } else {
-      $('.scroll-to-top').fadeOut();
-    }
-  });
 
-  // Closes responsive menu when a scroll trigger link is clicked
-  $('.js-scroll-trigger').click(function() {
-    $('.navbar-collapse').collapse('hide');
-  });
+var diameter = 300,
+    format = d3.format(",d"),
+    color = d3.scale.category20c();
 
-  // Activate scrollspy to add active class to navbar items on scroll
-  $('body').scrollspy({
-    target: '#mainNav',
-    offset: 80
-  });
+var bubble = d3.layout.pack()
+    .sort(null)
+    .size([diameter, diameter])
+    .padding(10);
 
-  // Collapse Navbar
-  var navbarCollapse = function() {
-    if ($("#mainNav").offset().top > 100) {
-      $("#mainNav").addClass("navbar-shrink");
-    } else {
-      $("#mainNav").removeClass("navbar-shrink");
-    }
-  };
-  // Collapse now if page is not at top
-  navbarCollapse();
-  // Collapse the navbar when page is scrolled
-  $(window).scroll(navbarCollapse);
+var svg = d3.select("body").append("svg")
+    .attr("width", diameter)
+    .attr("height", diameter)
+    .attr("class", "bubble");
 
-  // Floating label headings for the contact form
-  $(function() {
-    $("body").on("input propertychange", ".floating-label-form-group", function(e) {
-      $(this).toggleClass("floating-label-form-group-with-value", !!$(e.target).val());
-    }).on("focus", ".floating-label-form-group", function() {
-      $(this).addClass("floating-label-form-group-with-focus");
-    }).on("blur", ".floating-label-form-group", function() {
-      $(this).removeClass("floating-label-form-group-with-focus");
-    });
-  });
+  var node = svg.selectAll(".node")
+      .data(bubble.nodes(classes(root))
+      .filter(function(d) { return !d.children; }))
+    .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-})(jQuery); // End of use strict
+  node.append("title")
+      .text(function(d) { return d.className + ": " + format(d.value); });
+
+  node.append("circle")
+      .attr("r", function(d) { return d.r; })
+      .style("fill", function(d) { return color(d.packageName); });
+
+  node.append("text")
+      .attr("dy", ".3em")
+      .style("text-anchor", "middle")
+      .text(function(d) { return d.className.substring(0, d.r / 3); });
+
+
+// Returns a flattened hierarchy containing all leaf nodes under the root.
+function classes(root) {
+  var classes = [];
+
+  function recurse(name, node) {
+    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+    else classes.push({packageName: name, className: node.name, value: node.size});
+    console.log({packageName: name, className: node.name, value: node.size})
+  }
+
+  recurse(null, root);
+ return {children: classes};
+//return root
+}
+
+d3.select(self.frameElement).style("height", diameter + "px");
