@@ -23,13 +23,50 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 50%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
         margin: 0;
         padding: 0;
+      }
+      .buttons {
+        margin: 50px;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        font-size: 2.5rem;
+        text-decoration: none;
+        transition: all 0.15s ease;
+      }
+      .icon:hover {
+        color: #fff;
+      }
+      .phone {
+        background: #006599;
+        color: white;
+      }
+      .phone:hover {
+        background: white;
+        color: #006599;
+      }
+
+      .comment {
+        background: #2b97f1;
+        color: white;
+      }
+      .comment:hover {
+        background: white;
+        color: #2b97f1;
       }
     </style>
 </head>
@@ -68,6 +105,7 @@
 
     </div>
   </header>
+  <h1>Location:</h1>
   <div id="map"></div>
   <div className="buttons">
     <a href="#" class="icon phone">
