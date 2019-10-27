@@ -5,7 +5,7 @@ var ipgeolocationApi = new IPGeolocationAPI(apiKey, false);
 
 // Function to handle response from IP Geolocation API
 function handleResponse(json) {
-  console.log(obj.result);
+  console.log("latitude" + response.latit);
 }
 
 
