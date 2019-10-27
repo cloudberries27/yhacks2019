@@ -5,8 +5,12 @@ const apiKey = '951cd492488f476e8cdbac21c9916f6e';
 var ipgeolocationApi = new IPGeolocationAPI(apiKey, false);
 
 // Function to handle response from IP Geolocation API
-function handleResponse(json) {
-    console.log(json);
+function handleResponse(response) {
+    var userLat = parseFloat(response.latitude)
+    var userLong = parseFloat(response.longitude)
+    console.log(userLat)
+    console.log(userLong);
+
 }
 
 var GeolocationParams = require('ip-geolocation-api-javascript-sdk/GeolocationParams.js');
@@ -93,7 +97,7 @@ module.exports = class IPGeolocationAPI {
             getRequest('ipgeo', buildGeolocationUrlParams(this.apiKey, geolocationParams), callback);
         }
     }
-     
+
     getTimezone(callback, timezoneParams = null) {
         return getRequest('timezone', buildTimezoneUrlParams(this.apiKey, timezoneParams), callback);
     }
@@ -122,7 +126,7 @@ function buildGeolocationUrlParams(apiKey = '', geolocationParams = null) {
 
             urlParams = urlParams.concat('ip=', geolocationParams.getIPAddress());
         }
-    
+
         if(geolocationParams.getFields()) {
             if(urlParams) {
                 urlParams = urlParams.concat('&');
@@ -130,7 +134,7 @@ function buildGeolocationUrlParams(apiKey = '', geolocationParams = null) {
 
             urlParams = urlParams.concat('fields=', geolocationParams.getFields());
         }
-    
+
         if(geolocationParams.getExcludes()) {
             if(urlParams) {
                 urlParams = urlParams.concat('&');
@@ -138,7 +142,7 @@ function buildGeolocationUrlParams(apiKey = '', geolocationParams = null) {
 
             urlParams = urlParams.concat('excludes=', geolocationParams.getExcludes());
         }
-    
+
         if(geolocationParams.getLang()) {
             if(urlParams) {
                 urlParams = urlParams.concat('&');
@@ -181,7 +185,7 @@ function buildTimezoneUrlParams(apiKey = '', timezoneParams = null) {
 
             urlParams = urlParams.concat('lat=', timezoneParams.getLatitude(), '&long=', timezoneParams.getLongitude());
         }
-    
+
         if(timezoneParams.getLang()) {
             if(urlParams) {
                 urlParams = urlParams.concat('&');
@@ -222,7 +226,7 @@ function getRequest(subUrl, urlParams = '', callback) {
 }
 
 function postRequest(subUrl, urlParams = '', requestData = {}, callback) {
-    var jsonData = {}; 
+    var jsonData = {};
     var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
     var xhr = new XMLHttpRequest();
 
@@ -235,7 +239,7 @@ function postRequest(subUrl, urlParams = '', requestData = {}, callback) {
             } else {
                   jsonData = JSON.parse(this.responseText);
             }
-            
+
             if (callback && typeof(callback) === typeof(Function)) {
                 callback(jsonData);
             } else {
@@ -416,7 +420,7 @@ exports.XMLHttpRequest = function() {
   this.responseXML = "";
   this.status = null;
   this.statusText = null;
-  
+
   // Whether cross-site Access-Control requests should be made using
   // credentials such as cookies or authorization headers
   this.withCredentials = false;
@@ -5101,7 +5105,7 @@ var IncomingMessage = exports.IncomingMessage = function (xhr, response, mode, f
 		self.url = response.url
 		self.statusCode = response.status
 		self.statusMessage = response.statusText
-		
+
 		response.headers.forEach(function (header, key){
 			self.headers[key.toLowerCase()] = header
 			self.rawHeaders.push(key, header)
