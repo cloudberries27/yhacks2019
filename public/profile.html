@@ -1,0 +1,268 @@
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>DRIFT</title>
+
+  <!-- Custom fonts for this theme -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+
+
+
+
+
+
+  <!-- Theme CSS -->
+  <link href="css/freelancer.min.css" rel="stylesheet">
+
+  <style type="text/css">
+    body{
+      padding: 0;
+      margin: 0;
+      background: #333;
+      color: #eeeeee;
+      text-align: center;
+    }
+    .expandmenu{
+      display: none;
+    }
+    .menu-item,
+    .expandmenu-button {
+      background: #EEEEEE;
+      border-radius: 100%;
+      width: 80px;
+      height: 80px;
+      margin-left: -40px;
+      position: absolute;
+      color: #FFFFFF;
+      text-align: center;
+      -webkit-transform: translate3d(0,0,0);
+      transform: translate3d(0,0,0);
+      transition: transform ease-out 200ms;
+    }
+    .lines{
+      width: 25px;
+      height: 3px;
+      background: #596778;
+      display: block;
+      position: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -12.5px;
+      margin-top: -1.5px;
+      transition: transform 200ms;
+
+      }
+
+    .first-line{
+      transform: translate3d(0,-8px,0);
+
+    }
+    .sec-line{
+      transform: translate3d(0,0,0);
+    }
+    .third-line{
+      transform: translate3d(0,8px,0);
+    }
+    .expandmenu:checked + .expandmenu-button .first-line{
+      transform: translate3d(0,0,0) rotate(45deg);
+    }
+    .expandmenu:checked + .expandmenu-button .sec-line{
+      transform: translate3d(0,0,0) scale(0.1,1);
+    }
+    .expandmenu:checked + .expandmenu-button .first-line{
+      transform: translate3d(0,0,0) rotate(-45deg);
+    }
+    .menu
+    {
+      margin: auto;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 80px;
+      height: 80px;
+      text-align: center;
+      box-sizing: border-box;
+      font-size: 26px;
+    }
+    .menu-item:hover{
+      background: #EEEEEE;
+      color: #3290B1;
+      }
+    .menu-item:nth-child(3){
+      transition-duration: 180ms;
+      }
+    .menu-item:nth-child(4){
+      transition-duration: 180ms;
+      }
+    .menu-item:nth-child(5){
+      transition-duration: 180ms;
+      }
+    .menu-item:nth-child(6){
+      transition-duration: 180ms;
+      }
+    .menu-item:nth-child(7){
+      transition-duration: 180ms;
+      }
+    .menu-item:nth-child(8){
+      transition-duration: 180ms;
+      }
+    .menu-item:nth-child(9){
+      transition-duration: 180ms;
+      }
+    .expandmenu-button{
+      z-index: 2;
+      transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition-duration: 400ms;
+      transform:scale(1.1,1.1) translate3d(0,0,0);
+      cursor: pointer;
+      box-shadow: 3px 3px 0 0 rgba(0,0,0,0.14);
+      }
+      .expandmenu-button:hover{
+        transform: scale(1.2, 1.2) translate3d(0,0,0);
+        }
+      .expandmenu:checked + .expandmenu-button{
+        transition-timing-function: liner;
+        transition-duration: 200ms;
+        transform: scale(0.8, 0.8) translate3d(0,0,0);
+      }
+      .expandmenu:checked ~ .menu-item {
+        transition-timing-function: cubic-bezier(0.935,0,0.34,1.33);
+      }
+
+      .expandmenu:checked ~ .menu-item:nth-child(3) {
+        transition-duration: 180ms;
+        transform:translate3d(0.08361px, -104.99997px, 0);
+      }
+      .expandmenu:checked ~ .menu-item:nth-child(4) {
+        transition-duration: 280ms;
+        transform:translate3d(90.9466px, -52.47586px, 0);
+      }
+      .expandmenu:checked ~ .menu-item:nth-child(5) {
+        transition-duration: 380ms;
+        transform:translate3d(90.9466px, 52.47586px, 0);
+      }
+      .expandmenu:checked ~ .menu-item:nth-child(6) {
+        transition-duration: 480ms;
+        transform:translate3d(0.08361px, 104.99997px, 0);
+      }
+      .expandmenu:checked ~ .menu-item:nth-child(7) {
+        transition-duration: 580ms;
+        transform:translate3d(-90.8629px, 52.62064px, 0);
+      }
+      .expandmenu:checked ~ .menu-item:nth-child(8) {
+        transition-duration: 680ms;
+        transform:translate3d(-91.03006px, -52.33095px, 0);
+      }
+      .expandmenu:checked ~ .menu-item:nth-child(9) {
+        transition-duration: 780ms;
+        transform:translate3d(-0.25084px, -104.9997px, 0);
+      }
+
+      @media screen and (max-width: 700px){
+        body{
+          padding: 170px 0 0 0;
+          width: 100%;
+        }
+      }
+      i{
+            margin: auto;
+    margin-top: 24px!important;
+  }
+  </style>
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">My Account</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+
+      <!-- Masthead Avatar Image -->
+      <img class="masthead-avatar mb-5" src="img/DRIFT-logo.png" alt="">
+
+      <!-- Icon Divider -->
+      <div class="divider-custom divider-light">
+        <nav class="menu">
+      		<input type="checkbox" href="#" name="expandmenu" id="expandmenu" class="expandmenu">
+      		<label class="expandmenu-button" for="expandmenu">
+      			<span class="lines first-line"></span>
+      			<span class="lines sec-line"></span>
+      			<span class="lines third-line"></span>
+      		</label>
+      		<a href="#" class="menu-item col1"><i class="fa fa-home"></i></a>
+      		<a href="#" class="menu-item col2"><i class="fa fa-palette"></i></a>
+      		<a href="#" class="menu-item col3"><i class="fa fa-bell"></i></a>
+      		<a href="#" class="menu-item col4"><i class="fa fa-cart-arrow-down"></i></a>
+      		<a href="#" class="menu-item col5"><i class="fa fa-phone"></i></a>
+      		<a href="#" class="menu-item col6"><i class="fa fa-info"></i></a>
+      	</nav>
+
+
+
+        <div class="container">
+            <button type="submit" class="btn btn-secondary btn-xl btn-block" id="sendSMSButton">Send SMS</button>
+
+            &nbsp;
+        </div>
+      </div>
+
+
+    </div>
+  </header>
+
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/freelancer.min.js"></script>
+  <script src="bundletext.js"></script>
+
+</body>
+
+</html>
