@@ -27,8 +27,8 @@
     body{
       padding: 0;
       margin: 0;
-      background: #333;
-      color: #eeeeee;
+      background: #1abc9c;
+      color: #1abc9c;
       text-align: center;
     }
     .expandmenu{
@@ -93,7 +93,7 @@
       width: 80px;
       height: 80px;
       text-align: center;
-      box-sizing: border-box;
+      box-sizing: content-box;
       font-size: 26px;
     }
     .menu-item:hover{
@@ -125,17 +125,17 @@
       z-index: 2;
       transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
       transition-duration: 400ms;
-      transform:scale(1.1,1.1) translate3d(0,0,0);
+      transform:scale(2.1,2.1) translate3d(0,0,0);
       cursor: pointer;
       box-shadow: 3px 3px 0 0 rgba(0,0,0,0.14);
       }
       .expandmenu-button:hover{
-        transform: scale(1.2, 1.2) translate3d(0,0,0);
+        transform: scale(2.2, 2.2) translate3d(0,0,0);
         }
       .expandmenu:checked + .expandmenu-button{
         transition-timing-function: liner;
         transition-duration: 200ms;
-        transform: scale(0.8, 0.8) translate3d(0,0,0);
+        transform: scale(1.2, 1.2) translate3d(0,0,0);
       }
       .expandmenu:checked ~ .menu-item {
         transition-timing-function: cubic-bezier(0.935,0,0.34,1.33);
@@ -205,6 +205,7 @@
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
           </li>
         </ul>
+        <img class="masthead-avatar mb-5" src="img/DRIFT-logo.png" alt="">
       </div>
     </div>
   </nav>
@@ -214,38 +215,33 @@
     <div class="container d-flex align-items-center flex-column">
 
       <!-- Masthead Avatar Image -->
-      <img class="masthead-avatar mb-5" src="img/DRIFT-logo.png" alt="">
+
 
       <!-- Icon Divider -->
       <div class="divider-custom divider-light">
         <nav class="menu">
       		<input type="checkbox" href="#" name="expandmenu" id="expandmenu" class="expandmenu">
       		<label class="expandmenu-button" for="expandmenu">
-      			<span class="lines first-line"></span>
-      			<span class="lines sec-line"></span>
-      			<span class="lines third-line"></span>
+          <img style="border-radius:50%" width="80" height="80" src="img/serenaBig.jpg">
       		</label>
-      		<a href="#" class="menu-item col1"><i class="fa fa-home"></i></a>
-      		<a href="#" class="menu-item col2"><i class="fa fa-palette"></i></a>
-      		<a href="#" class="menu-item col3"><i class="fa fa-bell"></i></a>
-      		<a href="#" class="menu-item col4"><i class="fa fa-cart-arrow-down"></i></a>
-      		<a href="#" class="menu-item col5"><i class="fa fa-phone"></i></a>
-      		<a href="#" class="menu-item col6"><i class="fa fa-info"></i></a>
+      		<a href="#" class="menu-item col1"><i><img style="border-radius:50%" width="80" height="80" src="img/ccr1.png"></i></a>
+      		<a href="#" class="menu-item col2"><i><img style="border-radius:50%" width="80" height="80" src="img/yang.png"></i></a>
+      		<a href="#" class="menu-item col3"><i><img style="border-radius:50%" width="80" height="80" src="img/denise.png"></i></a>
+      		<a href="#" class="menu-item col4"><i><img style="border-radius:50%" width="80" height="80" src="img/john.png"></i></a>
+      		<a href="#" class="menu-item col5"><i><img style="border-radius:50%" width="80" height="80" src="img/steph.png"></i></a>
+      		<a href="#" class="menu-item col6"><i><img style="border-radius:50%" width="80" height="80" src="img/jordan.png"></i></a>
       	</nav>
-
-
-
-        <div class="container">
-            <button type="submit" class="btn btn-secondary btn-xl btn-block" id="sendSMSButton">Send SMS</button>
-
-            &nbsp;
-        </div>
       </div>
 
 
     </div>
   </header>
+<footer>
+  <div class="container">
+      <button type="submit" class="btn btn-secondary btn-xl btn-block" id="sendSMSButton">Send SMS</button>
 
+  </div>
+</footer>
 
 
   <!-- Bootstrap core JavaScript -->
