@@ -30,6 +30,8 @@
         height: 100%;
         margin: 0;
         padding: 0;
+        background-color: #1abc9c!important;
+        color: white;
       }
       .buttons {
         margin: 50px;
@@ -68,6 +70,12 @@
         background: white;
         color: #2b97f1;
       }
+      footer{
+        background-color: #1abc9c!important;
+      }
+      .image{
+        border-radius: 50%;
+      }
     </style>
 </head>
 
@@ -99,70 +107,97 @@
   <!-- Masthead -->
   <header class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center flex-column">
-
       <!-- Masthead Avatar Image -->
-      <img class="masthead-avatar mb-5" src="img/serena.jpg" alt="">
-
+      <img class="masthead-avatar mb-5 image" src="img/ccr1.png" alt="">
     </div>
+    <h1>Claudia Rodriguez</h1>
   </header>
-  <h1>Location:</h1>
+  <h2>Current Location:</h2>
   <div id="map"></div>
-  <div class="buttons">
-    <a href="#" class="icon phone">
-        <i class="fa fa-phone"></i>
-    </a>
-    <a href="#" class="icon comment">
-        <i class="fa fa-comment"></i>
-    </a>
-  </div>
-  <div class="emergency">
-    <button type="submit" class="btn btn-secondary btn-xl btn-block" id="sendMessageButton">Emergency Contacts</button>
-  </div>
-    <script>
-      // Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
-      var map, infoWindow;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 40
+  <footer>
+    <div class="container">
+      <div class="buttons">
+        <a href="#" class="icon phone" id='phone'>
+            <i class="fa fa-phone"></i>
+        </a>
+        <a href="#" class="icon comment" id='text'>
+            <i class="fa fa-comment"></i>
+        </a>
+      </div>
+      <div class="emergency">
+        <button type="submit" class="btn btn-secondary btn-xl btn-block" id="Emergency">Emergency Contacts</button>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function sendCall(){
+        window.alert("Calling Claudia")
+    }
+    function sendText(){
+        window.alert("Sending 'Are You Okay?'")
+    }
+    function emergency(){
+        window.alert("Calling Emergency Contact: Mom")
+    }
+    var smsCall = document.getElementById('phone');
+    var smsText = document.getElementById('text');
+    var Emergency = document.getElementById('Emergency');
+    if(smsCall){
+      smsCall.addEventListener('click', sendCall, false);
+    }
+    if(smsText){
+      smsText.addEventListener('click', sendText, false);
+    }
+    if(Emergency){
+      Emergency.addEventListener('click', emergency, false);
+    }
+  </script>
+  <script>
+    // Note: This example requires that you consent to location sharing when
+    // prompted by your browser. If you see the error "The Geolocation service
+    // failed.", it means you probably did not give permission for the browser to
+    // locate you.
+    var map, infoWindow;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 20
+      });
+      infoWindow = new google.maps.InfoWindow;
+
+      // Try HTML5 geolocation.
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('Location found.');
+          infoWindow.open(map);
+          map.setCenter(pos);
+        }, function() {
+          handleLocationError(true, infoWindow, map.getCenter());
         });
-        infoWindow = new google.maps.InfoWindow;
-
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
       }
 
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
-    </script>
-    <script async defer
+    }
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+                            'Error: The Geolocation service failed.' :
+                            'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
+  </script>
+  <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtpB9AAfGiVTOu-masl6NWh91eAidzNWw&callback=initMap">
-    </script>
+  </script>
 
 
   <!-- Bootstrap core JavaScript -->
